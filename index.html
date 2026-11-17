@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal App</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f3f4f6; font-family: system-ui, -apple-system, sans-serif; }
+        .hide { display: none !important; }
+    </style>
+</head>
+<body class="flex justify-center items-center min-h-screen bg-gray-100">
+
+    <!-- Mobile Frame Container -->
+    <div class="w-full max-w-md h-screen md:h-[850px] bg-white shadow-2xl flex flex-col relative overflow-hidden rounded-none md:rounded-3xl border border-gray-200">
+
+        <!-- TOP APP HEADER -->
+        <div id="app-header" class="bg-blue-600 text-white px-4 py-4 flex items-center justify-between shadow-md">
+            <button id="back-btn" class="text-xl hide" onclick="switchView('home-view')"><i class="fa-solid fa-chevron-left"></i></button>
+            <h1 id="header-title" class="text-lg font-semibold tracking-wide">Academics</h1>
+            <div class="w-6"></div>
+        </div>
+
+        <!-- CONTENT AREA (SCROLLABLE) -->
+        <div class="flex-1 overflow-y-auto pb-20">
+
+            <!-- VIEW 1: HOME / DASHBOARD -->
+            <div id="home-view" class="p-4 space-y-6">
+                <!-- Profile Banner Card -->
+                <div class="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-5 rounded-2xl shadow-lg flex flex-col items-center text-center relative">
+                    <img id="display-avatar" src="c:\Users\HP\Pictures\chalkpad\WhatsApp Image 2026-11-17 at 9.40.24 PM.jpeg" alt="Student Photo" class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover mb-3">
+                    <h2 id="display-name" class="text-xl font-bold">ARSHPREET SINGH</h2>
+                    <p id="display-roll" class="text-sm text-blue-100 mt-1">Roll. No: 2410992688, 2024-BE-CSE-AI-5 SEM 5</p>
+                    <span class="mt-2 bg-blue-800 text-blue-200 text-xs px-3 py-1 rounded-full font-medium">Student</span>
+                </div>
+
+                <!-- Frequently Used Section -->
+                <div>
+                    <h3 class="text-gray-700 font-bold mb-3 text-sm tracking-wider uppercase">Frequently Used</h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div onclick="switchView('profile-view')" class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center text-center cursor-pointer hover:bg-gray-50 transition">
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-2 text-xl"><i class="fa-solid fa-id-card"></i></div>
+                            <span class="text-xs font-medium text-gray-700">Grade Card</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center text-center cursor-pointer hover:bg-gray-50 transition">
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-2 text-xl"><i class="fa-solid fa-file-medical"></i></div>
+                            <span class="text-xs font-medium text-gray-700">Apply Leave</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center text-center cursor-pointer hover:bg-gray-50 transition">
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-2 text-xl"><i class="fa-solid fa-receipt"></i></div>
+                            <span class="text-xs font-medium text-gray-700">Fee History</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academics Section -->
+                <div>
+                    <h3 class="text-gray-700 font-bold mb-3 text-sm tracking-wider uppercase">Academics</h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center text-center cursor-pointer hover:bg-gray-50 transition">
+                            <div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-pink-500 mb-2 text-xl"><i class="fa-solid fa-calendar-days"></i></div>
+                            <span class="text-xs font-medium text-gray-700">Time Table</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center text-center cursor-pointer hover:bg-gray-50 transition">
+                            <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mb-2 text-xl"><i class="fa-solid fa-user-check"></i></div>
+                            <span class="text-xs font-medium text-gray-700">Attendance</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center text-center cursor-pointer hover:bg-gray-50 transition">
+                            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-2 text-xl"><i class="fa-solid fa-folder-open"></i></div>
+                            <span class="text-xs font-medium text-gray-700">Subjects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: PERSONAL INFO / PROFILE -->
+            <div id="profile-view" class="p-4 space-y-4 hide">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 space-y-3 text-sm">
+                    <h3 class="font-bold text-gray-800 border-b pb-2">Student's Details</h3>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">Name</span><span id="p-name" class="font-semibold text-gray-800">ARSHPREET SINGH</span></div>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">Roll. No</span><span id="p-roll" class="font-semibold text-gray-800">2410992688</span></div>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">Gender</span><span class="font-semibold text-gray-800">Male</span></div>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">D.O.B.</span><span class="font-semibold text-gray-800">26-01-2007</span></div>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">Category</span><span class="font-semibold text-gray-800">General</span></div>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">Mobile No.</span><span class="font-semibold text-gray-800">9888766276</span></div>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">Email</span><span id="p-email" class="font-semibold text-gray-800 truncate max-w-[180px]">arshpreet2688@ch</span></div>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">Date of Admission</span><span class="font-semibold text-gray-800">30-05-2024</span></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 space-y-3 text-sm">
+                    <h3 class="font-bold text-gray-800 border-b pb-2">Student's Custom Field(s)</h3>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">Personal Email</span><span class="font-semibold text-gray-800">arshrehal97@gmail.com</span></div>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">Batch Duration For ID</span><span class="font-semibold text-gray-800">2024-2028</span></div>
+                    <div class="flex justify-between py-1 border-b border-gray-50"><span class="text-gray-500 font-medium">College Name for ID</span><span id="p-college" class="font-semibold text-gray-800 text-right">Chitkara University Institute</span></div>
+                    <div class="flex justify-between py-1"><span class="text-gray-500 font-medium">Degree Name for ID</span><span id="p-degree" class="font-semibold text-blue-600 text-right">BE- CSE (ARTIFICIAL INTELLIGENCE)</span></div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: SECRET SERVER CONFIGURATION PAGE (Triggered by 4 Menu clicks) -->
+            <div id="admin-view" class="p-4 space-y-4 hide">
+                <div class="bg-amber-50 border border-amber-200 text-amber-800 p-3 rounded-xl text-xs mb-4">
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Secret Server Details Configuration. Update your server profile data below:
+                </div>
+                <form id="config-form" class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 space-y-4 text-sm" onsubmit="saveConfig(event)">
+                    <div>
+                        <label class="block text-gray-600 font-medium mb-1">Full Name</label>
+                        <input type="text" id="input-name" class="w-full border rounded-lg px-3 py-2 focus:outline-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-600 font-medium mb-1">Roll Number</label>
+                        <input type="text" id="input-roll" class="w-full border rounded-lg px-3 py-2 focus:outline-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-600 font-medium mb-1">Degree Name for ID</label>
+                        <input type="text" id="input-degree" class="w-full border rounded-lg px-3 py-2 focus:outline-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-600 font-medium mb-1">College Name for ID</label>
+                        <input type="text" id="input-college" class="w-full border rounded-lg px-3 py-2 focus:outline-blue-500" required>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition">Save to Server</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM NAVIGATION BAR -->
+        <div class="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-2 text-xs text-gray-500 shadow-lg">
+            <button onclick="switchView('home-view')" class="flex flex-col items-center focus:outline-none">
+                <i class="fa-solid fa-chart-line text-lg mb-0.5"></i>
+                <span>Timeline</span>
+            </button>
+            <button onclick="switchView('home-view')" class="flex flex-col items-center focus:outline-none relative">
+                <i class="fa-regular fa-comment-dots text-lg mb-0.5"></i>
+                <span class="absolute -top-1 right-1 bg-red-500 text-white rounded-full w-4 h-4 text-[10px] flex items-center justify-center">4</span>
+                <span>Messages</span>
+            </button>
+            <button onclick="switchView('home-view')" class="flex flex-col items-center focus:outline-none">
+                <i class="fa-regular fa-bell text-lg mb-0.5"></i>
+                <span>Notifications</span>
+            </button>
+            <button onclick="switchView('profile-view')" class="flex flex-col items-center focus:outline-none">
+                <i class="fa-regular fa-user text-lg mb-0.5"></i>
+                <span>Profile</span>
+            </button>
+            <!-- SECRET MENU BUTTON: Tap 4 times quickly to open secret configuration -->
+            <button onclick="handleMenuClick()" class="flex flex-col items-center focus:outline-none text-blue-600 font-semibold">
+                <i class="fa-solid fa-bars text-lg mb-0.5"></i>
+                <span>Menu</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let menuClickCount = 0;
+        let menuTimer = null;
+
+        // Load saved data from localStorage on startup
+        window.onload = function() {
+            const savedData = JSON.parse(localStorage.getItem('student_portal_data'));
+            if (savedData) {
+                document.getElementById('display-name').innerText = savedData.name;
+                document.getElementById('p-name').innerText = savedData.name;
+                document.getElementById('display-roll').innerText = `Roll. No: ${savedData.roll}, 2024-BE-CSE-AI-5 SEM 5`;
+                document.getElementById('p-roll').innerText = savedData.roll;
+                document.getElementById('p-degree').innerText = savedData.degree;
+                document.getElementById('p-college').innerText = savedData.college;
+                
+                // Prefill form
+                document.getElementById('input-name').value = savedData.name;
+                document.getElementById('input-roll').value = savedData.roll;
+                document.getElementById('input-degree').value = savedData.degree;
+                document.getElementById('input-college').value = savedData.college;
+            } else {
+                // Default values
+                document.getElementById('input-name').value = "ARSHPREET SINGH";
+                document.getElementById('input-roll').value = "2410992688";
+                document.getElementById('input-degree').value = "BE- CSE (ARTIFICIAL INTELLIGENCE)";
+                document.getElementById('input-college').value = "Chitkara University Institute of Engineering & Technology";
+            }
+        }
+
+        // Switch Views Function
+        function switchView(viewId) {
+            document.getElementById('home-view').classList.add('hide');
+            document.getElementById('profile-view').classList.add('hide');
+            document.getElementById('admin-view').classList.add('hide');
+            
+            document.getElementById(viewId).classList.remove('hide');
+
+            const backBtn = document.getElementById('back-btn');
+            const headerTitle = document.getElementById('header-title');
+
+            if (viewId === 'home-view') {
+                headerTitle.innerText = "Academics";
+                backBtn.classList.add('hide');
+            } else if (viewId === 'profile-view') {
+                headerTitle.innerText = "Personal Info";
+                backBtn.classList.remove('hide');
+            } else if (viewId === 'admin-view') {
+                headerTitle.innerText = "Secret Server Details";
+                backBtn.classList.remove('hide');
+            }
+        }
+
+        // 4-Clicks Secret Menu Logic
+        function handleMenuClick() {
+            menuClickCount++;
+            
+            if (menuTimer) clearTimeout(menuTimer);
+
+            if (menuClickCount === 4) {
+                menuClickCount = 0;
+                switchView('admin-view');
+                alert("🔒 Secret Menu Unlocked! Redirecting to Server Details Page.");
+            } else {
+                menuTimer = setTimeout(() => {
+                    menuClickCount = 0;
+                }, 1000); // Reset clicks if not pressed within 1 second
+            }
+        }
+
+        // Save Custom Details to Local Storage
+        function saveConfig(event) {
+            event.preventDefault();
+            const data = {
+                name: document.getElementById('input-name').value,
+                roll: document.getElementById('input-roll').value,
+                degree: document.getElementById('input-degree').value,
+                college: document.getElementById('input-college').value
+            };
+
+            localStorage.setItem('student_portal_data', JSON.stringify(data));
+            
+            // Update UI instantly
+            document.getElementById('display-name').innerText = data.name;
+            document.getElementById('p-name').innerText = data.name;
+            document.getElementById('display-roll').innerText = `Roll. No: ${data.roll}, 2024-BE-CSE-AI-5 SEM 5`;
+            document.getElementById('p-roll').innerText = data.roll;
+            document.getElementById('p-degree').innerText = data.degree;
+            document.getElementById('p-college').innerText = data.college;
+
+            alert("✅ Details successfully updated to the server!");
+            switchView('home-view');
+        }
+    </script>
+</body>
+</html>
